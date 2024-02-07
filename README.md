@@ -9,8 +9,8 @@ This is a web crawler written in Python.
   - [License](#license)
 
 ## Install
-   - Installing in the Python 38 environment.
-   - You should install the Requests, Pillow, and bs4 libraries.
+   - Installing this web crawler in the environment of Python 38.
+   - You should install the Requests, Pillow, and bs4 libraries first.
 
 ## Usage
   - Main.py is the main entry point for web crawlers.
