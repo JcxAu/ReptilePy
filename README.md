@@ -14,8 +14,8 @@ This is a web crawler written in Python（hereinafter referred to as a crawler�
 
 ## Usage
   - Main.py is the main entry point for the crawler.
-  - Initial support for Chinese and English.
-  - The initial interface is Simplified Chinese.
+  - Initial support for simplified Chinese and English.
+  - The initial interface is simplified Chinese.
   - Can change the language of the program. Just find the 「语言」 option.
 
 ## Maintainer
