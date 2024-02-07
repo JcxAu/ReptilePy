@@ -1,4 +1,7 @@
 # ReptilePy
+![](https://img.shields.io/badge/语言-Python-blue)
+![](https://img.shields.io/badge/程序类别-网络爬虫-green)
+
 这是一个由 Python 编写的网络爬虫（以下简称爬虫）。
 
 ## 目录
