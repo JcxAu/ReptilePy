@@ -4,6 +4,10 @@
 
 This is a web crawler written in Python（hereinafter referred to as a crawler）.
 
+Here is the icon for ReptilePy.
+
+![](../img/ReptilePy_icon.ico)
+
 ## Table of Contents
   - [Language](#Language)
   - [Install](#install)
