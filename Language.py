@@ -46,7 +46,9 @@ SimplifiedChinese_English = {
     '状态码为: ': 'The status code is:',
     '没有发现图片的网址 !': 'No URL found for the images',
     '语言': 'Language',
-    '请求超时 !': 'request timeout!'
+    '请求超时 !': 'request timeout!',
+    '不给 URL 怎么下载 ?': 'How to download without providing a URL?',
+    '     请输入一个 URL !     ': '          Please enter a URL!          '
 }
 
 SimplifiedChinese_SimplifiedChinese = {
@@ -97,5 +99,7 @@ SimplifiedChinese_SimplifiedChinese = {
     '状态码为: ': '状态码为: ',
     '没有发现图片的网址 !': '没有发现图片的网址 !',
     '语言': '语言',
-    '请求超时 !': '请求超时 !'
+    '请求超时 !': '请求超时 !',
+    '不给 URL 怎么下载 ?': '不给 URL 怎么下载 ?',
+    '     请输入一个 URL !     ': '     请输入一个 URL !     '
 }
