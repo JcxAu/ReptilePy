@@ -137,11 +137,14 @@ def start_reptile():
     if_download = True
 
     ent_content = ent.get()  # 获得 url
-    ent.delete(0, tkinter.END)  # 清空输入框的内容
-    ent['state'] = 'disable'  # 输入框禁止输入
-    but.grid_remove()  # 隐藏按钮
-
-    reptile_threads(ent_content)
+    if ent_content != '':
+        ent.delete(0, tkinter.END)  # 清空输入框的内容
+        ent['state'] = 'disable'  # 输入框禁止输入
+        but.grid_remove()  # 隐藏按钮
+        
+        reptile_threads(ent_content)
+    else:
+        if_download = False
 
 # 关闭"询问模式"的窗口
 
