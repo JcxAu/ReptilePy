@@ -2,11 +2,15 @@
 This is a web crawler written in Python（hereinafter referred to as a crawler）.
 
 ## Table of Contents
+  - [Language](#Language)
   - [Install](#install)
   - [Usage](#usage)
   - [Maintainer](#maintainer)
   - [Contributing](#contributing)
   - [License](#license)
+
+## Language
+Select Other Language README: [简体中文](README-Chinese(simplified).md)
 
 ## Install
    - Installing this crawler in the environment of Python 38.
