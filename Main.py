@@ -122,7 +122,7 @@ def reptile_threads(url: str):
             for i in range(residue, 16):
                 reptile_thread(url, num, res[1], 'reptile_' + str(i), 0.5, res[2])
     else:
-        tkinter.messagebox.showerror(title=language['唔...要不还是都爬吧'], message=language['   请设置下载模式 !   '])
+        tkinter.messagebox.showwarning(title=language['唔...要不还是都爬吧'], message=language['   请设置下载模式 !   '])
 
         ent['state'] = 'normal'
         but.grid(padx=40, pady=5)
