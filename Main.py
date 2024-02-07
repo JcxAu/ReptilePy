@@ -283,7 +283,7 @@ def about():
             about_win.minsize(width=250, height=100)
 
             # 标签展示
-            label = tk.Label(about_win, text='Provided by Python\nGUI provided by Python.Tkinter\nVersion 3.3', height=5, width=27)
+            label = tk.Label(about_win, text='Provided by Python\nGUI provided by Python.Tkinter\nStable version 1.0', height=5, width=27)
             label.grid(row=0, column=0, padx=(25, 15), pady=(5, 5))
 
             about_win.protocol('WM_DELETE_WINDOW', about_win_open_f)
