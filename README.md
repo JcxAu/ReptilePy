@@ -1,5 +1,5 @@
 # ReptilePy
-This is a web crawler written in Python.
+This is a web crawler written in Python（hereinafter referred to as a crawler）.
 
 ## Table of Contents
   - [Install](#install)
@@ -9,11 +9,11 @@ This is a web crawler written in Python.
   - [License](#license)
 
 ## Install
-   - Installing this web crawler in the environment of Python 38.
-   - You should install the Requests, Pillow, and bs4 libraries first.
+   - Installing this crawler in the environment of Python 38.
+   - You should install the requests, pillow, and bs4 libraries first.
 
 ## Usage
-  - Main.py is the main entry point for web crawlers.
+  - Main.py is the main entry point for the crawler.
   - Initial support for Chinese and English.
   - The initial interface is Simplified Chinese.
   - Can change the language of the program. Just find the 「语言」 option.
