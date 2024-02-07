@@ -494,7 +494,7 @@ if __name__ == '__main__':
     # 准备主窗口
     window = tk.Tk()
     window.geometry(w_h)
-    window.title(language['网络爬虫'])
+    window.title('ReptilePy')
     window.maxsize(width=300, height=150)
     window.minsize(width=300, height=150)
 
