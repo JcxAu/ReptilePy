@@ -71,7 +71,7 @@ def reptile_algorithm(url: str, ua: dict, ssl: bool = True):
             Log.write_log(language['result: 下载失败, 状态为: '] + str(state) + '\nurl: ' + str(url))
             return '下载失败'
     else:
-        Log.write_log(language['result: 请输入正确的URL'] + '\nurl: ' + str(url))
+        Log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
         return '下载失败'
 
 
