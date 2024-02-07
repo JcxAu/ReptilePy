@@ -144,6 +144,7 @@ def start_reptile():
         
         reptile_threads(ent_content)
     else:
+        tkinter.messagebox.showwarning(title=language['不给 URL 怎么下载 ?'], message=language['     请输入一个 URL !     '])
         if_download = False
 
 # 关闭"询问模式"的窗口
