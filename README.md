@@ -4,7 +4,7 @@ This is a web crawler written in Python.
 ## Table of Contents
   - [Install](#install)
   - [Usage](#usage)
-  - [Maintainers](#maintainers)
+  - [Maintainer](#maintainer)
   - [License](#license)
   - [Contributing](#contributing)
 
