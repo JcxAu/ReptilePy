@@ -1,4 +1,7 @@
 # ReptilePy
+![](https://img.shields.io/badge/Language-Python-blue)
+![](https://img.shields.io/badge/Program_category-Web_crawler-green)
+
 This is a web crawler written in Python（hereinafter referred to as a crawler）.
 
 ## Table of Contents
