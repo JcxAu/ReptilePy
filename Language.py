@@ -48,7 +48,7 @@ SimplifiedChinese_English = {
     '语言': 'Language',
     '请求超时 !': 'request timeout!',
     '不给 URL 怎么下载 ?': 'How to download without providing a URL?',
-    '     请输入一个 URL !     ': '          Please enter a URL!          '
+    '     请输入一个 URL !     ': '          Please enter a URL !          '
 }
 
 SimplifiedChinese_SimplifiedChinese = {
