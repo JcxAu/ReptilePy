@@ -5,8 +5,8 @@ This is a web crawler written in Python.
   - [Install](#install)
   - [Usage](#usage)
   - [Maintainer](#maintainer)
-  - [License](#license)
   - [Contributing](#contributing)
+  - [License](#license)
 
 ## Install
    - Installing in the Python 38 environment.
