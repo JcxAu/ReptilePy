@@ -25,7 +25,7 @@ This is a web crawler written in Python（hereinafter referred to as a crawler�
 
 Feel free to dive in! [Open an issue](https://github.com/JcxAu/ReptilePy/issues/new) or submit PRs.
 
-Standard Readme follows the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)Code of Conduct.
+ReptilePy follows the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) Code of Conduct.
 
 ## License
 [BSD 3](LICENSE) © 2024 JcxAu
