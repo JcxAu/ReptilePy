@@ -38,4 +38,4 @@
 ReptilePy 遵循 [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) 行为规范。
 
 ## 使用许可
-[BSD 3](LICENSE) © 2024 JcxAu
+[BSD 3](../LICENSE) © 2024 JcxAu
