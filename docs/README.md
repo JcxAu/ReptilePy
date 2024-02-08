@@ -38,5 +38,5 @@ Feel free to dive in! Open an [Issue](https://github.com/JcxAu/ReptilePy/issues/
 ReptilePy follows the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) Code of Conduct.
 
 ## License
-[BSD 3](LICENSE) © 2024 JcxAu
+[BSD 3](../LICENSE) © 2024 JcxAu
 
