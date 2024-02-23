@@ -279,28 +279,32 @@ def about():
         if not about_win_open:  # 确保只能开启一个窗口
             about_win_open = True
 
-            # 准备窗口
+           # 准备窗口
             about_win = tk.Toplevel(window)
             about_win.title(language['关于'])
-            about_win.geometry('350x120')
-            about_win.maxsize(width=350, height=120)
-            about_win.minsize(width=350, height=120)
+            about_win.geometry('340x150')
+            about_win.maxsize(width=340, height=150)
+            about_win.minsize(width=340, height=150)
 
             # 标签展示 ( 展示项目主页网址 )
-            label = tk.Label(about_win, text='The GitHub homepage for this program:\nhttps://github.com/JcxAu/ReptilePy', height=2, width=34)
-            label.grid(row=0, column=0, padx=(15, 5), pady=(10, 5))
+            lab1 = tk.Label(about_win, text='The GitHub homepage for this program:\nhttps://github.com/JcxAu/ReptilePy', height=2, width=34)
+            lab1.grid(row=0, column=0, padx=(20, 0), pady=(10, 3))
 
             # 跳转按钮 ( 跳转到项目主页 )
-            button = tk.Button(about_win, text='Access', width=7, height=1, command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy'))
-            button.grid(row=0, column=1, padx=(5, 10), pady=(10, 5))
+            but1 = tk.Button(about_win, text='Access', width=7, height=1, relief='flat', command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy'))
+            but1.grid(row=0, column=1, padx=(0, 10), pady=(10, 3))
 
             # 标签 ( 展示开源协议 )
-            label2 = tk.Label(about_win, text='Licensing:\nBSD 3', height=2, width=15)
-            label2.grid(row=1, column=0, padx=(15, 5), pady=(5, 5))
+            lab2 = tk.Label(about_win, text='Licensing:\nBSD 3', height=2, width=10)
+            lab2.grid(row=1, column=0, padx=(20, 0), pady=(3, 3))
 
             # 按钮 ( 跳转到开源协议 )
-            button2 = tk.Button(about_win, text='Access', width=7, height=1, command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy/blob/main/LICENSE'))
-            button2.grid(row=1, column=1, padx=(5, 10), pady=(5, 5))
+            but2 = tk.Button(about_win, text='View', width=7, height=1, relief='flat', command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy/blob/main/LICENSE'))
+            but2.grid(row=1, column=1, padx=(0, 10), pady=(3, 3))
+
+            # 版本信息
+            lab3 = tk.Label(about_win, text='Version information:\nReptilePy-Stable-Ver1.1', height=2, width=25)
+            lab3.grid(row=2, column=0, columnspan=2, padx=(20, 5), pady=(2, 10))
             
             about_win.protocol('WM_DELETE_WINDOW', about_win_open_f)
             about_win.mainloop()
