@@ -1,6 +1,6 @@
 import tkinter as tk, tkinter.messagebox
 import Get_date_html, Change_ini, Get_date_img, Language
-import sys, threading, queue, time
+import sys, threading, queue, time, webbrowser
 
 language = Language.SimplifiedChinese_SimplifiedChinese
 language_code = 'Chinese'
@@ -111,15 +111,15 @@ def reptile_threads(url: str):
     global if_download
     res = prepare_reptile()
     if res[1] == 'HTML' or res[1] == 'IMG':
-        if res[0] <= 16:
+        if res[0] <= 18:
             for i in range(0, res[0]):
                 reptile_thread(url, 1, res[1], 'reptile_' + str(i), 0.5, res[2])
         else:
-            num = int(res[0] / 16)
-            residue = res[0] - num * 16
+            num = int(res[0] / 18)
+            residue = res[0] - num * 18
             for i in range(0, residue):
                 reptile_thread(url, num + 1, res[1], 'reptile_' + str(i), res[2])
-            for i in range(residue, 16):
+            for i in range(residue, 18):
                 reptile_thread(url, num, res[1], 'reptile_' + str(i), 0.5, res[2])
     else:
         tkinter.messagebox.showwarning(title=language['唔...要不还是都爬吧'], message=language['   请设置下载模式 !   '])
@@ -282,14 +282,26 @@ def about():
             # 准备窗口
             about_win = tk.Toplevel(window)
             about_win.title(language['关于'])
-            about_win.geometry('250x100')
-            about_win.maxsize(width=250, height=100)
-            about_win.minsize(width=250, height=100)
+            about_win.geometry('350x120')
+            about_win.maxsize(width=350, height=120)
+            about_win.minsize(width=350, height=120)
 
-            # 标签展示
-            label = tk.Label(about_win, text='Provided by Python\nGUI provided by Python.Tkinter\nStable version 1.0', height=5, width=27)
-            label.grid(row=0, column=0, padx=(25, 15), pady=(5, 5))
+            # 标签展示 ( 展示项目主页网址 )
+            label = tk.Label(about_win, text='The GitHub homepage for this program:\nhttps://github.com/JcxAu/ReptilePy', height=2, width=34)
+            label.grid(row=0, column=0, padx=(15, 5), pady=(10, 5))
 
+            # 跳转按钮 ( 跳转到项目主页 )
+            button = tk.Button(about_win, text='Access', width=7, height=1, command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy'))
+            button.grid(row=0, column=1, padx=(5, 10), pady=(10, 5))
+
+            # 标签 ( 展示开源协议 )
+            label2 = tk.Label(about_win, text='Licensing:\nBSD 3', height=2, width=15)
+            label2.grid(row=1, column=0, padx=(15, 5), pady=(5, 5))
+
+            # 按钮 ( 跳转到开源协议 )
+            button2 = tk.Button(about_win, text='Access', width=7, height=1, command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy/blob/main/LICENSE'))
+            button2.grid(row=1, column=1, padx=(5, 10), pady=(5, 5))
+            
             about_win.protocol('WM_DELETE_WINDOW', about_win_open_f)
             about_win.mainloop()
 
@@ -411,8 +423,8 @@ def detector():
         if if_download:
             if download_info.qsize() == download_num or download_info.qsize() == 16:
                 if download_num != 0:
-                    if download_num > 16:
-                        loop_times = 16
+                    if download_num > 18:
+                        loop_times = 18
                     else:
                         loop_times = download_num
 
