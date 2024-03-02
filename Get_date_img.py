@@ -33,7 +33,6 @@ def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
             res_d['state'] = '失败'
             res_d['info'] = language['图片数据处理出错 !']
             return res_d
-
     else:
         res_d['state'] = '失败'
         res_d['info'] = language['图片请求失败 !'] + language['状态码为: '] + str(download_state)
