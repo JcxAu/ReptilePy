@@ -102,7 +102,7 @@ def find_pic_num():
 # 找到图片的 url
 
 
-def find_url_algorithm(url: str, ua: dict, ssl: bool = True) -> dict:
+def find_url_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     res_d: dict = {'state': None, 'url_l': None}
     url_l: list = []
     data_res_d = get_data(url, ua, ssl)
@@ -148,15 +148,21 @@ def find_url_algorithm(url: str, ua: dict, ssl: bool = True) -> dict:
                 return res_d
             else:
                 res_d['state'] = '失败'
+                lock.acquire()
                 Log.write_log(language['result: 下载失败, 状态为: '] + language['没有发现图片的网址 !'] + '\nurl: ' + str(url))
+                lock.release()
                 return res_d
         else:
             res_d['state'] = '失败'
+            lock.acquire()
             Log.write_log(language['result: 下载失败, 状态为: '] + str(tags_res_d['info']) + '\nurl: ' + str(url))
+            lock.release()
             return res_d
     else:
         res_d['state'] = '失败'
+        lock.acquire()
         Log.write_log(language['result: 下载失败, 状态为: '] + str(data_res_d['info']) + '\nurl: ' + str(url))
+        lock.release()
         return res_d
 
 # 爬取图片的主函数
@@ -168,27 +174,30 @@ def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     flag: bool = True
 
     if url != '' and 'http' == url[:4]:
-        result = find_url_algorithm(url, ua, ssl)
+        result = find_url_algorithm(url, ua, lock, ssl)
         if result['state'] == '成功':
             for img_url in result['url_l']:
                 download_res = download_img(img_url, ua, ssl)
                 if download_res['state'] == '成功':
                     lock.acquire()
                     pic_num += 1
-                    lock.acquire()
+                    lock.release()
                 elif download_res['state'] == '失败':
                     flag = False
+                    lock.acquire()
                     Log.write_log(language['result: 下载失败, 状态为: '] + str(download_res['info']) + '\nurl: ' + str(url))
+                    lock.release()
             res_d['flag'] = flag
             return res_d
         else:
             res_d['state'] = '失败'
             return res_d
     else:
-        Log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
         res_d['state'] = '失败'
+        lock.acquire()
+        Log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
+        lock.release()
         return res_d
-
 
 # 集成函数 (只要用这个就好了)
 
