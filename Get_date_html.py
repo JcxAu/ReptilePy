@@ -7,7 +7,6 @@ ua = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
 src = []
 pic_num = 0
 pic_num_list = []
-state = 'Error'
 language = Language.SimplifiedChinese_SimplifiedChinese
 
 # 获得指定 url 的网页
