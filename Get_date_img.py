@@ -10,15 +10,16 @@ language = Language.SimplifiedChinese_SimplifiedChinese
 # 下载图片
 
 
-def download_img(url: str, ua: dict, ssl: bool = True):
-    global state
+def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
+    res_d: dict = {'state': None, 'info': None}
     try:
         get_data = requests.get(url, headers=ua, timeout=(5, 7), verify=ssl)
     except requests.exceptions.RequestException:
-        state = language['图片请求失败 !']
-        return '下载失败'
-    state = get_data.status_code
-    if state == 200:
+        res_d['state'] = '失败'
+        res_d['info'] = language['图片请求失败 !']
+        return res_d
+    download_state = get_data.status_code
+    if download_state == 200:
         try:
             data_img = get_data.content
             bytes_img = io.BytesIO(data_img)
@@ -26,14 +27,18 @@ def download_img(url: str, ua: dict, ssl: bool = True):
             o = open('./photos/img' + str(pic_num) + '.' + im.format, 'wb')
             o.write(data_img)
             o.close()
+
+            res_d['state'] = '成功'
+            return res_d
         except Exception:
-            state = language['图片数据处理出错 !']
-            return '下载失败'
+            res_d['state'] = '失败'
+            res_d['info'] = language['图片数据处理出错 !']
+            return res_d
 
     else:
-        state = language['图片请求失败 !'] + language['状态码为: '] + str(state)
-        return '下载失败'
-
+        res_d['state'] = '失败'
+        res_d['info'] = language['图片请求失败 !'] + language['状态码为: '] + str(download_state)
+        return res_d
 
 # 找到此次开始时的图片序列
 
@@ -56,27 +61,29 @@ def find_pic_num():
         else:
             pic_num = 0
 
-
 # 爬虫算法
 
 
-def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True):
+def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     global pic_num
+    res_d: dict = {'state': None}
     if url != '' and 'http' == url[:4]:
-        lock.acquire()
-        info = download_img(url, ua, ssl)
-        if info != '下载失败':
+        download_info = download_img(url, ua, ssl)
+        if download_info['state'] == '成功':
+            lock.acquire()
             pic_num += 1
             lock.release()
-
+            
+            res_d['state'] = '成功'
+            return res_d
         else:
-            Log.write_log(language['result: 下载失败, 状态为: '] + str(state) + '\nurl: ' + str(url))
-            lock.release()
-            return '下载失败'
+            res_d['state'] = '失败'
+            Log.write_log(language['result: 下载失败, 状态为: '] + str(download_info['info']) + '\nurl: ' + str(url))
+            return res_d
     else:
+        res_d['state'] = '成功'
         Log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
-        return '下载失败'
-
+        return res_d
 
 # 集成函数 (只要用这个就行了)
 
@@ -86,8 +93,8 @@ def get_date_img(url: str, num_download: int, lock, time_sleep: float = 0.2, ssl
     i = 0
     while i < int(num_download):
         find_pic_num()
-        reptile_res = reptile_algorithm(url, ua, lock, ssl=ssl)
-        if reptile_res == '下载失败':
+        reptile_res_d = reptile_algorithm(url, ua, lock, ssl=ssl)
+        if reptile_res_d['state'] == '失败':
             download_error += 1
         i += 1
         time.sleep(time_sleep)
