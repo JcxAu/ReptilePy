@@ -72,16 +72,20 @@ def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
             lock.acquire()
             pic_num += 1
             lock.release()
-            
+
             res_d['state'] = '成功'
             return res_d
         else:
             res_d['state'] = '失败'
+            lock.acquire()
             Log.write_log(language['result: 下载失败, 状态为: '] + str(download_info['info']) + '\nurl: ' + str(url))
+            lock.release()
             return res_d
     else:
-        res_d['state'] = '成功'
+        res_d['state'] = '失败'
+        lock.acquire()
         Log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
+        lock.release()
         return res_d
 
 # 集成函数 (只要用这个就行了)
