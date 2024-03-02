@@ -290,23 +290,23 @@ def about():
 
             # 标签展示 ( 展示项目主页网址 )
             lab1 = tk.Label(about_win, text='The GitHub homepage for this program:\nhttps://github.com/JcxAu/ReptilePy', height=2, width=34)
-            lab1.grid(row=0, column=0, padx=(20, 0), pady=(10, 3))
+            lab1.grid(row=0, column=0, padx=(20, 0), pady=(12, 4))
 
             # 跳转按钮 ( 跳转到项目主页 )
             but1 = tk.Button(about_win, text='Access', width=7, height=1, relief='flat', command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy'))
-            but1.grid(row=0, column=1, padx=(0, 10), pady=(10, 3))
+            but1.grid(row=0, column=1, padx=(0, 10), pady=(12, 4))
 
             # 标签 ( 展示开源协议 )
             lab2 = tk.Label(about_win, text='Licensing:\nBSD 3', height=2, width=10)
-            lab2.grid(row=1, column=0, padx=(20, 0), pady=(3, 3))
+            lab2.grid(row=1, column=0, padx=(20, 0), pady=(3, 2))
 
             # 按钮 ( 跳转到开源协议 )
             but2 = tk.Button(about_win, text='View', width=7, height=1, relief='flat', command=lambda: webbrowser.open('https://github.com/JcxAu/ReptilePy/blob/main/LICENSE'))
-            but2.grid(row=1, column=1, padx=(0, 10), pady=(3, 3))
+            but2.grid(row=1, column=1, padx=(0, 10), pady=(3, 2))
 
             # 版本信息
             lab3 = tk.Label(about_win, text='Version information: ReptilePy-Stable-Ver1.2', height=2, width=39)
-            lab3.grid(row=2, column=0, columnspan=2, padx=(20, 5), pady=(2, 10))
+            lab3.grid(row=2, column=0, columnspan=2, padx=(20, 5), pady=(1, 10))
 
             about_win.protocol('WM_DELETE_WINDOW', about_win_open_f)
             about_win.mainloop()
