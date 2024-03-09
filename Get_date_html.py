@@ -49,7 +49,7 @@ def get_tag(html: str, tag: str, parser: str = 'html.parser') -> dict:
 # 下载图片
 
 
-def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
+def download_img(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     res_d = {'state': None, 'info': None}
     try:
         data = requests.get(url, headers=ua, timeout=(4, 6), verify=ssl)
@@ -61,11 +61,13 @@ def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
     if download_state == 200:
         try:
             data_img = data.content
+            lock.acquire()
             bytes_img = io.BytesIO(data_img)
             im = Image.open(bytes_img)
             o = open('./photos/img' + str(pic_num) + '.' + im.format, 'wb')
             o.write(data_img)
             o.close()
+            lock.release()
 
             res_d['state'] = '成功'
             return res_d
@@ -177,7 +179,7 @@ def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
         result = find_url_algorithm(url, ua, lock, ssl)
         if result['state'] == '成功':
             for img_url in result['url_l']:
-                download_res = download_img(img_url, ua, ssl)
+                download_res = download_img(img_url, ua, lock, ssl)
                 if download_res['state'] == '成功':
                     lock.acquire()
                     pic_num += 1
