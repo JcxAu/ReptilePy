@@ -9,7 +9,7 @@ language = Language.SimplifiedChinese_SimplifiedChinese
 # 下载图片
 
 
-def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
+def download_img(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     res_d: dict = {'state': None, 'info': None}
     try:
         get_data = requests.get(url, headers=ua, timeout=(5, 7), verify=ssl)
@@ -21,11 +21,13 @@ def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
     if download_state == 200:
         try:
             data_img = get_data.content
+            lock.acquire()
             bytes_img = io.BytesIO(data_img)
             im = Image.open(bytes_img)
             o = open('./photos/img' + str(pic_num) + '.' + im.format, 'wb')
             o.write(data_img)
             o.close()
+            lock.release()
 
             res_d['state'] = '成功'
             return res_d
@@ -66,7 +68,7 @@ def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     global pic_num
     res_d: dict = {'state': None}
     if url != '' and 'http' == url[:4]:
-        download_info = download_img(url, ua, ssl)
+        download_info = download_img(url, ua, lock, ssl)
         if download_info['state'] == '成功':
             lock.acquire()
             pic_num += 1
