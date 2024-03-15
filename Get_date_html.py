@@ -49,7 +49,7 @@ def get_tag(html: str, tag: str, parser: str = 'html.parser') -> dict:
 # 下载图片
 
 
-def download_img(url: str, ua: dict, lock, ssl: bool = True) -> dict:
+def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
     res_d = {'state': None, 'info': None}
     try:
         data = requests.get(url, headers=ua, timeout=(4, 6), verify=ssl)
@@ -61,13 +61,11 @@ def download_img(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     if download_state == 200:
         try:
             data_img = data.content
-            lock.acquire()
             bytes_img = io.BytesIO(data_img)
             im = Image.open(bytes_img)
             o = open('./photos/img' + str(pic_num) + '.' + im.format, 'wb')
             o.write(data_img)
             o.close()
-            lock.release()
 
             res_d['state'] = '成功'
             return res_d
@@ -104,7 +102,7 @@ def find_pic_num():
 # 找到图片的 url
 
 
-def find_url_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
+def find_url_algorithm(url: str, ua: dict, ssl: bool = True) -> dict:
     res_d: dict = {'state': None, 'url_l': None}
     url_l: list = []
     data_res_d = get_data(url, ua, ssl)
@@ -150,21 +148,15 @@ def find_url_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
                 return res_d
             else:
                 res_d['state'] = '失败'
-                lock.acquire()
                 Log.write_log(language['result: 下载失败, 状态为: '] + language['没有发现图片的网址 !'] + '\nurl: ' + str(url))
-                lock.release()
                 return res_d
         else:
             res_d['state'] = '失败'
-            lock.acquire()
             Log.write_log(language['result: 下载失败, 状态为: '] + str(tags_res_d['info']) + '\nurl: ' + str(url))
-            lock.release()
             return res_d
     else:
         res_d['state'] = '失败'
-        lock.acquire()
         Log.write_log(language['result: 下载失败, 状态为: '] + str(data_res_d['info']) + '\nurl: ' + str(url))
-        lock.release()
         return res_d
 
 # 爬取图片的主函数
@@ -176,19 +168,19 @@ def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
     flag: bool = True
 
     if url != '' and 'http' == url[:4]:
-        result = find_url_algorithm(url, ua, lock, ssl)
+        lock.acquire()
+        result = find_url_algorithm(url, ua, ssl)
+        lock.release()
         if result['state'] == '成功':
             for img_url in result['url_l']:
-                download_res = download_img(img_url, ua, lock, ssl)
+                lock.acquire()
+                download_res = download_img(img_url, ua, ssl)
                 if download_res['state'] == '成功':
-                    lock.acquire()
                     pic_num += 1
-                    lock.release()
                 elif download_res['state'] == '失败':
                     flag = False
-                    lock.acquire()
                     Log.write_log(language['result: 下载失败, 状态为: '] + str(download_res['info']) + '\nurl: ' + str(url))
-                    lock.release()
+                lock.release()
             res_d['flag'] = flag
             return res_d
         else:
@@ -204,21 +196,28 @@ def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
 # 集成函数 (只要用这个就好了)
 
 
-def get_date_html(url: str, num_download: int, lock, time_sleep: float = 0.2, ssl: bool = True) -> int:
-    download_error: int = 0
+def get_date_html(url: str, num_download: int, lock, time_sleep: float = 0.2, ssl: bool = True) -> dict:
+    res_d: dict = {'success': 0, 'error': 0}
+    error: int = 0
+    success: int = 0
     i = 0
     while i < int(num_download):
         find_pic_num()
         reptile_res_d = reptile_algorithm(url, ua, lock, ssl=ssl)
         if reptile_res_d['state'] == '失败' or reptile_res_d['flag'] is False:
-            download_error += 1
+            error += 1
+        else:
+            success += 1
         i += 1
         time.sleep(time_sleep)
-
+        
+    res_d['success'] = success
+    res_d['error'] = error
+    
     if int(num_download) != 0:
-        return download_error
+        return res_d
     else:
-        return 0
+        return res_d
 
 
 Change_ini.start()
