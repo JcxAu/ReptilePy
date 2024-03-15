@@ -416,7 +416,8 @@ def help_usr():
 def detector():
     global if_download
     while True:
-        error_num = 0
+        error: int = 0
+        success: int = 0
 
         Change_ini.start()
         # 查询下载数量
@@ -437,11 +438,12 @@ def detector():
                     for i in range(0, loop_times):
                         try:
                             download_res = download_info.get(False)
-                            error_num += download_res
+                            error += download_res['error']
+                            success += download_res['success']
                         except queue.Empty:
                             break
 
-                    tkinter.messagebox.showinfo(title=language['下载报告'], message=language['成功: '] + str(download_num - error_num) + ' / ' + language['失败: '] + str(error_num))
+                    tkinter.messagebox.showinfo(title=language['下载报告'], message=language['成功: '] + str(success) + ' / ' + language['失败: '] + str(error))
                 else:
                     tkinter.messagebox.showwarning(title=language['嗯? 没有下载吗 ?'], message=language['下载次数不能为 0 哦'])
 
@@ -451,7 +453,7 @@ def detector():
 
                 if_download = False
 
-        time.sleep(0.2)
+        time.sleep(0.25)
 
 # 改变语言为简体中文
 
