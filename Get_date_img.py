@@ -27,7 +27,7 @@ def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
             o.write(data_img)
             o.close()
 
-            file = open('./debug.text', 'a')
+            file = open('./debug.tet', 'a')
             file.write('成功地下载了图片\n')
             file.close()
 
