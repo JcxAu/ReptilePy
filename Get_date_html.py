@@ -67,6 +67,10 @@ def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
             o.write(data_img)
             o.close()
 
+            file = open('./debug.text', 'a')
+            file.write('成功地下载了图片\n')
+            file.close()
+
             res_d['state'] = '成功'
             return res_d
         except Exception:
@@ -162,25 +166,21 @@ def find_url_algorithm(url: str, ua: dict, ssl: bool = True) -> dict:
 # 爬取图片的主函数
 
 
-def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
+def reptile_algorithm(url: str, ua: dict, ssl: bool = True) -> dict:
     global pic_num
     res_d = {'state': None, 'flag': None}
     flag: bool = True
 
     if url != '' and 'http' == url[:4]:
-        lock.acquire()
         result = find_url_algorithm(url, ua, ssl)
-        lock.release()
         if result['state'] == '成功':
             for img_url in result['url_l']:
-                lock.acquire()
                 download_res = download_img(img_url, ua, ssl)
                 if download_res['state'] == '成功':
                     pic_num += 1
                 elif download_res['state'] == '失败':
                     flag = False
                     Log.write_log(language['result: 下载失败, 状态为: '] + str(download_res['info']) + '\nurl: ' + str(url))
-                lock.release()
             res_d['flag'] = flag
             return res_d
         else:
@@ -188,9 +188,7 @@ def reptile_algorithm(url: str, ua: dict, lock, ssl: bool = True) -> dict:
             return res_d
     else:
         res_d['state'] = '失败'
-        lock.acquire()
         Log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
-        lock.release()
         return res_d
 
 # 集成函数 (只要用这个就好了)
@@ -203,17 +201,19 @@ def get_date_html(url: str, num_download: int, lock, time_sleep: float = 0.2, ss
     i = 0
     while i < int(num_download):
         find_pic_num()
-        reptile_res_d = reptile_algorithm(url, ua, lock, ssl=ssl)
+        lock.acquire()
+        reptile_res_d = reptile_algorithm(url, ua, ssl=ssl)
+        lock.release()
         if reptile_res_d['state'] == '失败' or reptile_res_d['flag'] is False:
             error += 1
         else:
             success += 1
         i += 1
         time.sleep(time_sleep)
-        
+
     res_d['success'] = success
     res_d['error'] = error
-    
+
     if int(num_download) != 0:
         return res_d
     else:
