@@ -27,6 +27,10 @@ def download_img(url: str, ua: dict, ssl: bool = True) -> dict:
             o.write(data_img)
             o.close()
 
+            file = open('./debug.text', 'a')
+            file.write('成功地下载了图片\n')
+            file.close()
+
             res_d['state'] = '成功'
             return res_d
         except Exception:
@@ -91,7 +95,9 @@ def get_date_img(url: str, num_download: int, lock, time_sleep: float = 0.2, ssl
     i = 0
     while i < int(num_download):
         find_pic_num()
-        reptile_res_d = reptile_algorithm(url, ua, lock, ssl=ssl)
+        lock.acquire()
+        reptile_res_d = reptile_algorithm(url, ua, ssl=ssl)
+        lock.release()
         if reptile_res_d['state'] == '失败':
             error += 1
         else:
@@ -100,7 +106,7 @@ def get_date_img(url: str, num_download: int, lock, time_sleep: float = 0.2, ssl
         time.sleep(time_sleep)
     res_d['success'] = success
     res_d['error'] = error
-    
+
     if int(num_download) != 0:
         return res_d
     else:
