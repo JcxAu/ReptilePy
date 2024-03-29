@@ -24,7 +24,7 @@ Select Other Language README: [简体中文](README-Chinese(simplified).md)
    - You should install the requests, pillow, and bs4 libraries first.
 
 ## Usage
-  - Main.py is the main entry point for the crawler.
+  - main.py is the main entry point for the crawler.
   - Initial support for simplified Chinese and English.
   - The initial interface is simplified Chinese.
   - Can change the language of the program. Just find the 「语言」 option.
