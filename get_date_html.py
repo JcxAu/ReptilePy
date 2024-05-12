@@ -184,7 +184,7 @@ def reptile_algorithm(url: str, ua: dict, ssl: bool = True) -> dict:
             return res_d
     else:
         res_d['state'] = '失败'
-        Log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
+        log.write_log(language['result: 请输入正确的URL !'] + '\nurl: ' + str(url))
         return res_d
 
 # 集成函数 (只要用这个就好了)
