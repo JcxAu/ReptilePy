@@ -20,7 +20,7 @@ Here is the icon for ReptilePy:
 Select Other Language README: [简体中文](README-Chinese(simplified).md)
 
 ## Install
-   - Installing this crawler in the environment of Python 38.
+   - Installing this crawler in the environment of Python 38 or Python 310.
    - You should install the requests, pillow, and bs4 libraries first.
 
 ## Usage
