@@ -20,7 +20,7 @@
 选择其他语言的 README: [English](README.md)
 
 ## 安装
-  - 在 Python38 的环境下安装本爬虫。
+  - 在 Python38 或 Python 310 的环境下安装本爬虫。
   - 您应该首先安装 request、pillow 和 bs4 库。
 
 ## 使用
