@@ -511,6 +511,8 @@ def forced_exit():
 if __name__ == '__main__':
     # 各种长宽的初始值 (适用于简体中文)
     w_h = '300x150'
+    w = 300
+    h = 150
     but_w = 8
     but_h = 3
     m_l_w = 13
@@ -525,6 +527,8 @@ if __name__ == '__main__':
             language_code = 'English'
 
             w_h = '300x170'
+            w = 300
+            h = 170
             but_w = 15
             but_h = 3
             m_l_w = 23
@@ -543,8 +547,8 @@ if __name__ == '__main__':
     window = tk.Tk()
     window.geometry(w_h)
     window.title('ReptilePy')
-    window.maxsize(width=300, height=150)
-    window.minsize(width=300, height=150)
+    window.maxsize(width=w, height=h)
+    window.minsize(width=w, height=h)
 
     # 准备主菜单
     main_menu = tk.Menu(window)
