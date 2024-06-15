@@ -112,6 +112,6 @@ def get_date_img(url: str, num_download: int, lock, time_sleep: float = 0.2, ssl
 
 change_ini.start()
 res = change_ini.ask_value('language')
-if res != change_ini.language_d['暂无']:
+if res != 'None':
     if res == 'English':
         language_d = language.SimplifiedChinese_English
