@@ -53,7 +53,8 @@ SimplifiedChinese_English = {
     '视频数据处理出错 !': 'Video data processing error !',
     '通过视频所在的网页获取': 'Obtain through the webpage where the videos are located',
     '不支持的文件格式 !': 'Unsupported file format !',
-    '通过视频自身的网址获取': 'Obtain them through the website of the videos themselves'
+    '通过视频自身的网址获取': 'Obtain them through the website of the videos themselves',
+    '没有发现视频的网址 !': 'No video URL found !'
 }
 
 SimplifiedChinese_SimplifiedChinese = {
@@ -111,5 +112,6 @@ SimplifiedChinese_SimplifiedChinese = {
     '视频数据处理出错 !': '视频数据处理出错 !',
     '通过视频所在的网页获取': '通过视频所在的网页获取',
     '不支持的文件格式 !': '不支持的文件格式 !',
-    '通过视频自身的网址获取': '通过视频自身的网址获取'
+    '通过视频自身的网址获取': '通过视频自身的网址获取',
+    '没有发现视频的网址 !': '没有发现视频的网址 !'
 }
