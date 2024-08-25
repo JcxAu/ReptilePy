@@ -100,7 +100,7 @@ def reptile_algorithm(url: str, headers: dict, ssl: bool = True) -> dict:
     global video_num
     flag: bool = True
     videos_l = []
-    res_d = {'state': None, 'flag': None}
+    res_d: dict = {'state': None, 'flag': None}
 
     if url != '' and ('http://' in url[:7] or 'https://' in url[:8]):
         result = get_data(url, headers, ssl)
@@ -124,7 +124,7 @@ def reptile_algorithm(url: str, headers: dict, ssl: bool = True) -> dict:
             else:
                 res_d['state'] = '失败'
                 log.write_log(language_d['result: 下载失败, 状态为: '] + str(tag_res_d['info']) + '\nurl: ' + str(url), file_name=log_file_name)
-
+                return res_d
         else:
             res_d['state'] = '失败'
             log.write_log(language_d['result: 下载失败, 状态为: '] + str(result['info']) + '\nurl: ' + str(url), file_name=log_file_name)
