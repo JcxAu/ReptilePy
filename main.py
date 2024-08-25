@@ -343,7 +343,7 @@ def about():
             but2.grid(row=1, column=1, padx=(0, 10), pady=(3, 2))
 
             # 版本信息
-            lab3 = tk.Label(about_win, text='Version information:\nReptilePy-Stable-Ver1.4.2', height=2, width=30)
+            lab3 = tk.Label(about_win, text='Version information:\nReptilePy-Stable-Ver2.0.1', height=2, width=30)
             lab3.grid(row=2, column=0, padx=(35, 5), pady=(1, 10), sticky='W')
 
             about_win.protocol('WM_DELETE_WINDOW', about_win_open_f)
