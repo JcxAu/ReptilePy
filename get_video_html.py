@@ -37,6 +37,11 @@ def get_tag(html: str, tags: list, parser: str = 'html.parser') -> dict:
         soup = BeautifulSoup(html, parser)
         for tag in tags:
             tags_l = tags_l + soup.select(tag)
+        if not tags_l:
+            res_d['state'] = '失败'
+            res_d['info'] = language_d['没有发现视频的网址 !']
+            return res_d
+
         res_d['state'] = '成功'
         res_d['tag_list'] = tags_l
         return res_d
