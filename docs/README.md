@@ -54,7 +54,7 @@ ReptilePy follows the [Contributor Covenant](https://www.contributor-covenant.or
   - BeautifulSoup: [MIT License](https://github.com/wention/BeautifulSoup4/blob/master/COPYING.txt)
 
 ## Licenses of Standard Libraries
-The standard libraries `tkinter`, `time`, and `threading` are part of the Python Standard Library and are licensed under the PSF License Agreement. See the [Python GitHub Repository](https://github.com/python/cpython/blob/main/LICENSE) for more details.
+The standard libraries `tkinter`, `time`, `threading`, `queue`, `sys`, `webbrowser`, `os`, `configparser` and `io` are part of the Python Standard Library and are licensed under the PSF License Agreement. See the [Python GitHub Repository](https://github.com/python/cpython/blob/main/LICENSE) for more details.
 
 ## License
 [BSD 3](../LICENSES/LICENSE) © JcxAu
