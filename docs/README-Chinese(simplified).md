@@ -34,8 +34,26 @@
 
 ## 如何贡献
 非常欢迎你的加入! 提一个 [Issue](https://github.com/JcxAu/ReptilePy/issues/new) 或者提交一个 [Pull Request](https://github.com/JcxAu/ReptilePy/pulls)。
-
 ReptilePy 遵循 [Contributor Covenant](https://www.contributor-covenant.org/zh-cn/version/2/1/code_of_conduct/) 行为规范。
 
+## 依赖
+- **标准库**
+  - tkinter (标准库的一部分)
+  - time (标准库的一部分)
+  - threading (标准库的一部分)
+  - queue (标准库的一部分)
+  - sys (标准库的一部分)
+  - webbrowser (标准库的一部分)
+  - os (标准库的一部分)
+  - configparser (标准库的一部分)
+  - io (标准库的一部分)
+- **第三方库**
+  - Pillow: [MIT License](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
+  - requests: [Apache License 2.0](https://github.com/psf/requests/blob/master/LICENSE)
+  - BeautifulSoup: [MIT License](https://github.com/wention/BeautifulSoup4/blob/master/COPYING.txt)
+
+## 标准库许可
+标准库`tkinter`、`time`、`threading`、`queue`、`sys`、`webbrowser`、`os`、`configparser`和`io`是Python标准库的一部分，并根据PSF许可协议获得许可。请参阅[Python GitHub仓库](https://github.com/python/cpython/blob/main/LICENSE)了解更多详情。
+
 ## 使用许可
-[BSD 3](../LICENSE) © JcxAu
+[BSD 3](../LICENSES/LICENSE) © JcxAu
