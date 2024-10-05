@@ -14,6 +14,8 @@ Here is the icon for ReptilePy:
   - [Usage](#usage)
   - [Maintainer](#maintainer)
   - [Contributing](#contributing)
+  - [Dependences](#Dependences)
+  - [Licenses of Standard Libraries](#Licenses of Standard Libraries)
   - [License](#license)
 
 ## Language
