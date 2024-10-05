@@ -37,6 +37,25 @@ Feel free to dive in! Open an [Issue](https://github.com/JcxAu/ReptilePy/issues/
 
 ReptilePy follows the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/) Code of Conduct.
 
+## Dependences
+- **Standard Libraries**
+  - tkinter (Part of Python Standard Library)
+  - time (Part of Python Standard Library)
+  - threading (Part of Python Standard Library)
+  - queue (Part of Python Standard Library)
+  - sys (Part of Python Standard Library)
+  - webbrowser (Part of Python Standard Library)
+  - os (Part of Python Standard Library)
+  - configparser (Part of Python Standard Library)
+  - io (Part of Python Standard Library)
+- **Third-Party Libraries**
+  - Pillow: [MIT License](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
+  - requests: [Apache License 2.0](https://github.com/psf/requests/blob/master/LICENSE)
+  - BeautifulSoup: [MIT License](https://github.com/wention/BeautifulSoup4/blob/master/COPYING.txt)
+
+## Licenses of Standard Libraries
+The standard libraries `tkinter`, `time`, and `threading` are part of the Python Standard Library and are licensed under the PSF License Agreement. See the [Python GitHub Repository](https://github.com/python/cpython/blob/main/LICENSE) for more details.
+
 ## License
-[BSD 3](../LICENSE) © JcxAu
+[BSD 3](../LICENSES/LICENSE) © JcxAu
 
