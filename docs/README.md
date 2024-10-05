@@ -15,8 +15,8 @@ Here is the icon for ReptilePy:
   - [Maintainer](#maintainer)
   - [Contributing](#contributing)
   - [Dependences](#Dependences)
-  - [Licenses of Standard Libraries](#Licenses of Standard Libraries)
-  - [License](#license)
+  - [Licenses of Standard Libraries](#Licenses%20of%20Standard%20Libraries)
+  - [License](#License)
 
 ## Language
 Select Other Language README: [简体中文](README-Chinese(simplified).md)
