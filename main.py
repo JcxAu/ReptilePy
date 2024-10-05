@@ -1,3 +1,16 @@
+# Copyright (c) 2024, JcxAu
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice,
+#   this list of conditions and the following disclaimer.
+# * Redistributions in binary form must reproduce the above copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+#
+# See the LICENSE file for more details.
 import tkinter as tk, tkinter.messagebox
 import get_img_html, get_img_byte, get_img_json, get_video_html, get_video_byte
 import sys, threading, queue, time, webbrowser
